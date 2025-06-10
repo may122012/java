@@ -1,23 +1,38 @@
-import java.util.Scanner;
+package monitoria;
 
 public class Palindromo {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite uma palavra: ");
-        String palavra = scanner.nextLine();
-        
-        boolean ehPalindromo = true;
-        for (int i = 0; i < palavra.length()/2; i++) {
-            if (palavra.charAt(i) != palavra.charAt(palavra.length()-1-i)) {
-                ehPalindromo = false;
-                break;
-            }
-        }
-        
-        if (ehPalindromo) {
-            System.out.printf("\"%s\" é um palindromo!%n", palavra);
+        /*
+         * palavra: ABCBA
+         * palavra2: SubiNoOnibuS
+         * palavra3: Enzo
+         */
+
+        String palavra = "subi no onibus"; 
+
+        boolean ehPalindromo = verificarPalindromo(palavra);
+
+        if(ehPalindromo){
+            System.out.println("A palavra " + palavra + " é um palindromo");
         } else {
-            System.out.printf("\"%s\" NÃO é um palindromo.%n", palavra);
+            System.out.println("A palavra " + palavra + " não é um palindromo!");
+        }
+    }
+
+    static boolean verificarPalindromo(String palavra){
+        String palavraContrario = "";
+
+        for(int i = palavra.length()-1; i >= 0 ;i-- ){
+            char letra = palavra.charAt(i); // 'O', 'Z', 'N', 'E'
+            palavraContrario += letra; // "O", "OZ", "OZN", "OZNE"...
+        }
+
+        System.out.println("Palavra ao contrário: " + palavraContrario);
+        System.out.println("Palavra normal: " + palavra);
+        if (palavraContrario.equals(palavra)){
+            return true;
+        } else {
+            return false;
         }
     }
 }

@@ -1,18 +1,28 @@
-import java.util.Scanner;
+package monitoria;
 
 public class Fibonacci {
+    /*
+     * {1, 1}
+     * {1, 1, (1 + 1) = 2, (1 + 2) = 3, (2 + 3) = 5, (3 + 5) = 8}
+     */
+
+    
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o valor de N: ");
-        int n = scanner.nextInt();
-        
-        System.out.printf("Sequência de Fibonacci até o %dº termo:%n", n);
-        int a = 0, b = 1;
-        for (int i = 0; i < n; i++) {
-            System.out.print(a + " ");
-            int temp = a + b;
-            a = b;
-            b = temp;
+        int tamanhoSequencia = 10;
+        int[] sequenciaFibonnaci = new int[tamanhoSequencia];
+    
+        for (int i = 0; i < sequenciaFibonnaci.length; i++){
+            if (i == 0 || i == 1){
+                sequenciaFibonnaci[i] = 1;
+                continue;
+            }
+
+            sequenciaFibonnaci[i] = sequenciaFibonnaci[i-1] + sequenciaFibonnaci[i-2]; // 2
+        }
+
+        for (int i = 0; i < sequenciaFibonnaci.length; i++){
+            System.out.println("Elemento na posição " + (i+1) + ": " + sequenciaFibonnaci[i]);
         }
     }
+
 }
